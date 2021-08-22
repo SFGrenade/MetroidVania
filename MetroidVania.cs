@@ -1,12 +1,9 @@
 ﻿using Modding;
-using SFCore;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UObject = UnityEngine.Object;
-using SFCore.Generics;
 using System.IO;
 using SFCore.Utils;
 
@@ -14,14 +11,14 @@ namespace MetroidVania
 {
     public class MetroidVania : Mod
     {
-        private const bool _DEBUG = true;
-        private const string _AB_PATH = "E:\\Github_Projects\\TorvusBog Assets\\Assets\\AssetBundles\\";
+        private const bool Debug = true;
+        private const string AbPath = "E:\\Github_Projects\\TorvusBog Assets\\Assets\\AssetBundles\\";
         internal static MetroidVania Instance;
 
         public AssetBundle AbScene { get; private set; } = null;
         public AssetBundle AbMat { get; private set; } = null;
 
-        public override string GetVersion() => SFCore.Utils.Util.GetVersion(Assembly.GetExecutingAssembly());
+        public override string GetVersion() => Util.GetVersion(Assembly.GetExecutingAssembly());
 
         //public override List<ValueTuple<string, string>> GetPreloadNames()
         //{
@@ -78,12 +75,12 @@ namespace MetroidVania
         {
 #pragma warning disable CS0162 // Unerreichbarer Code wurde entdeckt.
             Log("Loading AssetBundles");
-            Assembly _asm = Assembly.GetExecutingAssembly();
+            Assembly asm = Assembly.GetExecutingAssembly();
             if (AbScene == null)
             {
-                if (!_DEBUG)
+                if (!Debug)
                 {
-                    using (Stream s = _asm.GetManifestResourceStream("MetroidVania.Resources.tbscenes"))
+                    using (Stream s = asm.GetManifestResourceStream("MetroidVania.Resources.tbscenes"))
                     {
                         if (s != null)
                         {
@@ -93,14 +90,14 @@ namespace MetroidVania
                 }
                 else
                 {
-                    AbScene = AssetBundle.LoadFromFile(_AB_PATH + "tbscenes");
+                    AbScene = AssetBundle.LoadFromFile(AbPath + "tbscenes");
                 }
             }
             if (AbMat == null)
             {
-                if (!_DEBUG)
+                if (!Debug)
                 {
-                    using (Stream s = _asm.GetManifestResourceStream("MetroidVania.Resources.tbassets"))
+                    using (Stream s = asm.GetManifestResourceStream("MetroidVania.Resources.tbassets"))
                     {
                         if (s != null)
                         {
@@ -110,7 +107,7 @@ namespace MetroidVania
                 }
                 else
                 {
-                    AbMat = AssetBundle.LoadFromFile(_AB_PATH + "tbassets");
+                    AbMat = AssetBundle.LoadFromFile(AbPath + "tbassets");
                 }
             }
             Log("Finished loading AssetBundles");
@@ -218,10 +215,10 @@ namespace MetroidVania
             StatueDescription,
             CustomScene,
             ScenePrefabName,
-            StatueGO
+            STATUE_GO
         }
-        private bool r2BmcTimeout;
-        private bool r2BmcSuccess;
+        private bool _r2BmcTimeout;
+        private bool _r2BmcSuccess;
         private static readonly string R2BmcBmc = "BossModCore";
         private static readonly string R2BmcCom = $"{R2BmcBmc} - ";
         private static readonly string R2BmcSetNum = $" - {Commands.NumBosses}";
@@ -229,26 +226,26 @@ namespace MetroidVania
         private static readonly string R2BmcSetStatDesc = $" - {Commands.StatueDescription} - ";
         private static readonly string R2BmcSetCustomScene = $" - {Commands.CustomScene} - ";
         private static readonly string R2BmcSetCustomSceneName = $" - {Commands.ScenePrefabName} - ";
-        private static readonly string R2BmcSetStatGo = $" - {Commands.StatueGO} - ";
+        private static readonly string R2BmcSetStatGo = $" - {Commands.STATUE_GO} - ";
 
         private IEnumerator Register2BossModCore()
         {
             PlayerData pd = PlayerData.instance;
-            r2BmcTimeout = false;
+            _r2BmcTimeout = false;
 
             GameManager.instance.StartCoroutine(RegisterTimeout());
 
-            while (!r2BmcTimeout)
+            while (!_r2BmcTimeout)
             {
-                r2BmcSuccess = pd.GetBool(R2BmcBmc);
-                if (r2BmcSuccess)
+                _r2BmcSuccess = pd.GetBool(R2BmcBmc);
+                if (_r2BmcSuccess)
                 {
-                    r2BmcTimeout = true;
+                    _r2BmcTimeout = true;
                 }
                 yield return null;
             }
 
-            if (!r2BmcSuccess)
+            if (!_r2BmcSuccess)
             {
                 Log(R2BmcBmc + " not found!");
                 yield break;
@@ -256,20 +253,19 @@ namespace MetroidVania
             Log(R2BmcBmc + " is able to be registered to!");
             yield return null;
 
-            pd.SetInt(R2BmcCom + this.GetType().Name + R2BmcSetNum, 1);
-            pd.SetString(R2BmcCom + this.GetType().Name + R2BmcSetStatName + "0", "Boss Statue Name");
-            pd.SetString(R2BmcCom + this.GetType().Name + R2BmcSetStatDesc + "0", "Boss Statue Description");
-            pd.SetBool(R2BmcCom + this.GetType().Name + R2BmcSetCustomScene + "0", false);
-            pd.SetString(R2BmcCom + this.GetType().Name + R2BmcSetCustomSceneName + "0", "GG_Hornet_2");
-            pd.SetVariable<GameObject>(R2BmcCom + this.GetType().Name + R2BmcSetStatGo + "0", new GameObject("StatePrefabGO"));
+            pd.SetInt(R2BmcCom + GetType().Name + R2BmcSetNum, 1);
+            pd.SetString(R2BmcCom + GetType().Name + R2BmcSetStatName + "0", "Boss Statue Name");
+            pd.SetString(R2BmcCom + GetType().Name + R2BmcSetStatDesc + "0", "Boss Statue Description");
+            pd.SetBool(R2BmcCom + GetType().Name + R2BmcSetCustomScene + "0", false);
+            pd.SetString(R2BmcCom + GetType().Name + R2BmcSetCustomSceneName + "0", "GG_Hornet_2");
+            pd.SetVariable(R2BmcCom + GetType().Name + R2BmcSetStatGo + "0", new GameObject("StatePrefabGO"));
         }
 
         private IEnumerator RegisterTimeout()
         {
             yield return new WaitForSecondsRealtime(3.0f);
-            r2BmcTimeout = true;
-            r2BmcSuccess = false;
-            yield break;
+            _r2BmcTimeout = true;
+            _r2BmcSuccess = false;
         }
 
         #endregion BossModCore Registration
