@@ -12,7 +12,7 @@ namespace MetroidVania
     public class MetroidVania : Mod
     {
         private const bool Debug = true;
-        private const string AbPath = "E:\\Github_Projects\\TorvusBog Assets\\Assets\\AssetBundles\\";
+        private const string AbPath = "E:\\Documents\\Projects\\Unity Projects\\TorvusBog Assets\\Assets\\AssetBundles\\";
         internal static MetroidVania Instance;
 
         public AssetBundle AbScene { get; private set; } = null;
