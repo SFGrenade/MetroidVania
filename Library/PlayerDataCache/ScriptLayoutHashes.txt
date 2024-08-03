@@ -1,0 +1,16 @@
+WindowsStandalone
+PlayerPath?
+E:/Github_Projects/TorvusBog Assets/Assets/AssetBundles/tbscenes
+SceneListBegin?
+Assets/Scenes/SF_MP2_TB01.unity
+SceneListEnd?
+05524b8f659e7bfe5756d1335fec24ba SFCore.dll:SFCore.MonoBehaviours.BlurPlanePatcher
+5c368c438ca196f72831141413c0512b SFCore.dll:SFCore.MonoBehaviours.PatchMusicRegions
+967f1551dc007354a1337bbd392d0042 SFCore.dll:SFCore.MonoBehaviours.SceneManagerPatcher
+10b443e5026fcf4607578e8be0f1a556 SFCore.dll:SFCore.MonoBehaviours.SceneMapPatcher
+75f8840ce5483a6af9a1b2c5d0cb05ef SFCore.dll:SFCore.MonoBehaviours.SpritePatcher
+e41ab69f16d0e3cf71221bdc07ccb3d4 Assembly-CSharp.dll:.HazardRespawnMarker
+ee0cbb1005511383ef4735750d3268e6 Assembly-CSharp.dll:.CameraLockArea
+69eedccbd0840519031a548d5852b76d Assembly-CSharp.dll:.HazardRespawnTrigger
+c97898bf279d9a3880ebc854580858f6 Assembly-CSharp.dll:.TransitionPoint
+7e0493afc85c7e562d16f8e650c0fc18 Assembly-CSharp.dll:.DamageHero

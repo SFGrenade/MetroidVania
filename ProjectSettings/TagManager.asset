@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Terrain
+  - Player
+  - Transition Gates
+  - Enemies
+  - Projectiles
+  - Hero Detector
+  - Terrain Detector
+  - Enemy Detector
+  - Item
+  - Hero Attack
+  - Particle
+  - Interactive Object
+  - Hero Box
+  - Grass
+  - Enemy Attack
+  - Damage All
+  - Bouncer
+  - Soft Terrain
+  - Corpse
+  - UGUI
+  - 
+  - 
+  - Map Pin
+  - 
+  m_SortingLayers:
+  - name: Ambient
+    uniqueID: 928527297
+    locked: 0
+  - name: Background
+    uniqueID: 1175782627
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: WallDecoration
+    uniqueID: 3569300965
+    locked: 0
+  - name: Foreground
+    uniqueID: 1406208515
+    locked: 0

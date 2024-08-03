@@ -1,0 +1,11 @@
+ManifestFileVersion: 0
+CRC: 3105197986
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: tbassets
+      Dependencies: {}
+    Info_1:
+      Name: tbscenes
+      Dependencies:
+        Dependency_0: tbassets

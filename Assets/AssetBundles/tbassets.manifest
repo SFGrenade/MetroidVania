@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 1721469956
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 446ff2d408a90f898560976bead81935
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 036e9b3d562d01aa47a677cf2ba453b6
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Meshes/TorvusBog/00 0 0.obj
+- Assets/Meshes/BlurPlane.obj
+- Assets/Meshes/TorvusBog/00 0 1.obj
+- Assets/Audio/TorvusBogLoop.wav
+Dependencies: []
